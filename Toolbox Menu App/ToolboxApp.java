@@ -64,6 +64,26 @@ public class ToolboxApp {
         }
     }
 
+    public static void isPrime(){
+        System.out.println("Enter a number to check if it is prime: ");
+        int num = sc.nextInt();
+
+        if(num > 1){
+            for(int i=2; i<=Math.sqrt(num); i++){
+                if(num % i == 0){
+                    System.out.println(num + " is a prime number.");
+                    break;
+                }
+                else{
+                    System.out.println(num + " is not a prime number.");
+                }
+            }
+
+        } else {
+            System.out.println(num + " is not a prime number.");
+        }
+    }
+
     public static void main(String[] args) {
         
         boolean stop = false;
@@ -103,9 +123,11 @@ public class ToolboxApp {
                     System.out.print("\n (menu is shown again)");
                     break;
                 case "6":
+                    triangleOfStars();
                     System.out.print("\n (menu is shown again)");
                     break;
                 case "7":
+                    isPrime();
                     System.out.print("\n (menu is shown again)");
                     break;
                 case "8":
