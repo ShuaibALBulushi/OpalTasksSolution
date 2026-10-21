@@ -9,6 +9,7 @@ public class ToolboxApp {
     public static void celsiusToFahrenheit() {
         System.out.print("Enter temperature in Celsius: ");
         double celsius = sc.nextDouble();
+        sc.nextLine();
         double fahrenheit = (celsius * 9/5) + 32;
         System.out.println(celsius + " C is equal to " + fahrenheit + " F");
     }
@@ -16,6 +17,7 @@ public class ToolboxApp {
     public static void evenOrOdd() {
         System.out.print("Enter a number: ");
         int number = sc.nextInt();
+        sc.nextLine();
         if (number % 2 == 0) {
             System.out.println(number + " is even.");
         } else {
@@ -94,6 +96,7 @@ public class ToolboxApp {
         }
 
         System.out.println("The reversed number is: " + reversed);
+
     }
 
     public static void numberPyramid(){
@@ -122,48 +125,49 @@ public class ToolboxApp {
             System.out.println("8. Reverse a number");
             System.out.println("9. Number pyramid");
             System.out.println("0. Exit");
-            System.out.print("Please enter a number between 0 and 9");
+            System.out.print("Please enter a number between 0 and 9: ");
             String input = sc.nextLine();
             
             switch(input){
                 case "1":
                     celsiusToFahrenheit();
-                    System.out.print("\n (menu is shown again)");
+                    System.out.println("\n (menu is shown again)");
                     break;
                 case "2":
-                    System.out.print("\n (menu is shown again)");
+                    evenOrOdd();
+                    System.out.println("\n (menu is shown again)");
                     break;
                 case "3":
                     maxOfThree();
-                    System.out.print("\n (menu is shown again)");
+                    System.out.println("\n (menu is shown again)");
                     break;
                 case "4":
                     factorial();
-                    System.out.print("\n (menu is shown again)");
+                    System.out.println("\n (menu is shown again)");
                     break;
                 case "5":
                     multiplicationTable();
-                    System.out.print("\n (menu is shown again)");
+                    System.out.println("\n (menu is shown again)");
                     break;
                 case "6":
                     triangleOfStars();
-                    System.out.print("\n (menu is shown again)");
+                    System.out.println("\n (menu is shown again)");
                     break;
                 case "7":
                     isPrime();
-                    System.out.print("\n (menu is shown again)");
+                    System.out.println("\n (menu is shown again)");
                     break;
                 case "8":
                     reverseNumber();
-                    System.out.print("\n (menu is shown again)");
+                    System.out.println("\n (menu is shown again)");
                     break;
                 case "9":
                     numberPyramid();
-                    System.out.print("\n (menu is shown again)");
+                    System.out.println("\n (menu is shown again)");
                     break;
                 case "0":
                     stop = true;
-                    System.out.println("Exiting the program...");
+                    System.out.println("Goodbye!");
                     break;
                 default:
                     System.out.println("Invalid input. Please enter a number between 0 and 9.");
@@ -172,7 +176,6 @@ public class ToolboxApp {
 
         }
         while(!stop);
-
         sc.close();
     }
 }
