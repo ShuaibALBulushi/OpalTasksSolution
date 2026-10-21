@@ -35,6 +35,16 @@ public class ToolboxApp {
         System.out.println("The maximum of the three numbers is: " + max);
     }
 
+    public static void factorial(){
+        System.out.println("Enter a number to calculate its factorial: ");
+        int num = sc.nextInt();
+        int factorial = 1;
+        for(int i=1; i<=num; i++){
+            factorial = factorial * i;
+        }
+        System.out.println("The factorial of " + num + " is: " + factorial);
+    }
+
     public static void main(String[] args) {
         
         boolean stop = false;
@@ -66,6 +76,7 @@ public class ToolboxApp {
                     System.out.print("\n (menu is shown again)");
                     break;
                 case "4":
+                    factorial();
                     System.out.print("\n (menu is shown again)");
                     break;
                 case "5":
