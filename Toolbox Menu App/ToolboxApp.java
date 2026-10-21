@@ -21,8 +21,47 @@ public class ToolboxApp {
             System.out.println("9. Number pyramid");
             System.out.println("0. Exit");
             System.out.print("Please enter a number between 0 and 9");
+            String input = sc.nextLine();
+            
+            switch(input){
+                case "1":
+                    
+                    break;
+                case "2":
+                    
+                    break;
+                case "3":
+                    
+                    break;
+                case "4":
+                    
+                    break;
+                case "5":
+                    
+                    break;
+                case "6":
+                    
+                    break;
+                case "7":
+                    
+                    break;
+                case "8":
+                    
+                    break;
+                case "9":
+                    
+                    break;
+                case "0":
+                    stop = true;
+                    System.out.println("Exiting the program...");
+                    break;
+                default:
+                    System.out.println("Invalid input. Please enter a number between 0 and 9.");
+            }
 
         }
         while(!stop);
+
+        sc.close();
     }
 }
