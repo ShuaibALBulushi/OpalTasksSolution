@@ -105,9 +105,8 @@ public class ToolboxApp {
         for (int i = numStr.length() - 1; i >= 0; i--) {
             reversed += numStr.charAt(i);
         }
-
+        reversed = String.valueOf(Integer.parseInt(reversed));
         System.out.println("The reversed number is: " + reversed);
-
     }
 
     public static void numberPyramid() {
