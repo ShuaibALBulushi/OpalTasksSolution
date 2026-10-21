@@ -96,6 +96,17 @@ public class ToolboxApp {
         System.out.println("The reversed number is: " + reversed);
     }
 
+    public static void numberPyramid(){
+        System.out.println("Enter the number of rows for the number pyramid: ");
+        int rows = sc.nextInt();
+        for(int i=1; i<=rows; i++){
+            for(int j=1; j<=i; j++){
+                System.out.print(j + " ");
+            }
+            System.out.println();
+        }
+    }
+
     public static void main(String[] args) {
         
         boolean stop = false;
@@ -147,7 +158,7 @@ public class ToolboxApp {
                     System.out.print("\n (menu is shown again)");
                     break;
                 case "9":
-                    
+                    numberPyramid();
                     System.out.print("\n (menu is shown again)");
                     break;
                 case "0":
