@@ -23,6 +23,18 @@ public class ToolboxApp {
         }
     }
 
+    public static void maxOfThree() {
+        System.out.print("Enter first number: ");
+        int num1 = sc.nextInt();
+        System.out.print("Enter second number: ");
+        int num2 = sc.nextInt();
+        System.out.print("Enter third number: ");
+        int num3 = sc.nextInt();
+        int max2Num = Math.max(num1, num2);
+        int max = Math.max(max2Num, num3);
+        System.out.println("The maximum of the three numbers is: " + max);
+    }
+
     public static void main(String[] args) {
         
         boolean stop = false;
@@ -50,6 +62,7 @@ public class ToolboxApp {
                     System.out.print("\n (menu is shown again)");
                     break;
                 case "3":
+                    maxOfThree();
                     System.out.print("\n (menu is shown again)");
                     break;
                 case "4":
