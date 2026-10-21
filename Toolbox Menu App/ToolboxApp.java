@@ -26,30 +26,31 @@ public class ToolboxApp {
             switch(input){
                 case "1":
                     
+                System.out.print("\n (menu is shown again)");
                     break;
                 case "2":
-                    
+                    System.out.print("\n (menu is shown again)");
                     break;
                 case "3":
-                    
+                    System.out.print("\n (menu is shown again)");
                     break;
                 case "4":
-                    
+                    System.out.print("\n (menu is shown again)");
                     break;
                 case "5":
-                    
+                    System.out.print("\n (menu is shown again)");
                     break;
                 case "6":
-                    
+                    System.out.print("\n (menu is shown again)");
                     break;
                 case "7":
-                    
+                    System.out.print("\n (menu is shown again)");
                     break;
                 case "8":
-                    
+                    System.out.print("\n (menu is shown again)");
                     break;
                 case "9":
-                    
+                    System.out.print("\n (menu is shown again)");
                     break;
                 case "0":
                     stop = true;
@@ -57,6 +58,7 @@ public class ToolboxApp {
                     break;
                 default:
                     System.out.println("Invalid input. Please enter a number between 0 and 9.");
+                    System.out.print("\n (menu is shown again)");
             }
 
         }
