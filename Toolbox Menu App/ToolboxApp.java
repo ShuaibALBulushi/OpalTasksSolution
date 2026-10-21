@@ -84,6 +84,18 @@ public class ToolboxApp {
         }
     }
 
+    public static void reverseNumber(){
+        String reversed = "";
+        System.out.println("Enter a number to reverse:");
+        String numStr = sc.next();
+
+        for(int i=numStr.length()-1; i>=0; i--){
+            reversed += numStr.charAt(i);
+        }
+
+        System.out.println("The reversed number is: " + reversed);
+    }
+
     public static void main(String[] args) {
         
         boolean stop = false;
@@ -131,9 +143,11 @@ public class ToolboxApp {
                     System.out.print("\n (menu is shown again)");
                     break;
                 case "8":
+                    reverseNumber();
                     System.out.print("\n (menu is shown again)");
                     break;
                 case "9":
+                    
                     System.out.print("\n (menu is shown again)");
                     break;
                 case "0":
