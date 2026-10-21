@@ -13,6 +13,16 @@ public class ToolboxApp {
         System.out.println(celsius + " C is equal to " + fahrenheit + " F");
     }
 
+    public static void evenOrOdd() {
+        System.out.print("Enter a number: ");
+        int number = sc.nextInt();
+        if (number % 2 == 0) {
+            System.out.println(number + " is even.");
+        } else {
+            System.out.println(number + " is odd.");
+        }
+    }
+
     public static void main(String[] args) {
         
         boolean stop = false;
@@ -34,7 +44,7 @@ public class ToolboxApp {
             switch(input){
                 case "1":
                     celsiusToFahrenheit();
-                System.out.print("\n (menu is shown again)");
+                    System.out.print("\n (menu is shown again)");
                     break;
                 case "2":
                     System.out.print("\n (menu is shown again)");
