@@ -5,6 +5,14 @@ public class ToolboxApp {
 
     static Scanner sc = new Scanner(System.in);
 
+
+    public static void celsiusToFahrenheit() {
+        System.out.print("Enter temperature in Celsius: ");
+        double celsius = sc.nextDouble();
+        double fahrenheit = (celsius * 9/5) + 32;
+        System.out.println(celsius + " C is equal to " + fahrenheit + " F");
+    }
+
     public static void main(String[] args) {
         
         boolean stop = false;
@@ -25,7 +33,7 @@ public class ToolboxApp {
             
             switch(input){
                 case "1":
-                    
+                    celsiusToFahrenheit();
                 System.out.print("\n (menu is shown again)");
                     break;
                 case "2":
