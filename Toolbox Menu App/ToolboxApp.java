@@ -45,6 +45,14 @@ public class ToolboxApp {
         System.out.println("The factorial of " + num + " is: " + factorial);
     }
 
+    public static void multiplicationTable(){
+        System.out.println("Enter a number to display its multiplication table: ");
+        int num = sc.nextInt();
+        for(int i=1; i<=num; i++){
+            System.out.println(num + " x " + i + " = " + (num * i));
+        }
+    }
+
     public static void main(String[] args) {
         
         boolean stop = false;
@@ -80,6 +88,7 @@ public class ToolboxApp {
                     System.out.print("\n (menu is shown again)");
                     break;
                 case "5":
+                    multiplicationTable();
                     System.out.print("\n (menu is shown again)");
                     break;
                 case "6":
