@@ -1,16 +1,14 @@
 import java.util.Scanner;
 
-
 public class ToolboxApp {
 
     static Scanner sc = new Scanner(System.in);
-
 
     public static void celsiusToFahrenheit() {
         System.out.print("Enter temperature in Celsius: ");
         double celsius = sc.nextDouble();
         sc.nextLine();
-        double fahrenheit = (celsius * 9/5) + 32;
+        double fahrenheit = (celsius * 9 / 5) + 32;
         System.out.println(celsius + " C is equal to " + fahrenheit + " F");
     }
 
@@ -28,57 +26,69 @@ public class ToolboxApp {
     public static void maxOfThree() {
         System.out.print("Enter first number: ");
         int num1 = sc.nextInt();
+        sc.nextLine();
         System.out.print("Enter second number: ");
         int num2 = sc.nextInt();
+        sc.nextLine();
         System.out.print("Enter third number: ");
         int num3 = sc.nextInt();
+        sc.nextLine();
         int max2Num = Math.max(num1, num2);
         int max = Math.max(max2Num, num3);
         System.out.println("The maximum of the three numbers is: " + max);
     }
 
-    public static void factorial(){
+    public static void factorial() {
         System.out.println("Enter a number to calculate its factorial: ");
         int num = sc.nextInt();
+        sc.nextLine();
         int factorial = 1;
-        for(int i=1; i<=num; i++){
+        for (int i = 1; i <= num; i++) {
             factorial = factorial * i;
         }
         System.out.println("The factorial of " + num + " is: " + factorial);
     }
 
-    public static void multiplicationTable(){
+    public static void multiplicationTable() {
         System.out.println("Enter a number to display its multiplication table: ");
         int num = sc.nextInt();
-        for(int i=1; i<=num; i++){
+        sc.nextLine();
+        for (int i = 1; i <= num; i++) {
             System.out.println(num + " x " + i + " = " + (num * i));
         }
     }
 
-    public static void triangleOfStars(){
+    public static void triangleOfStars() {
         System.out.println("Enter the number of rows for the triangle of stars: ");
         int rows = sc.nextInt();
-        for(int i=1; i<=rows; i++){
-            for(int j=1; j<=i; j++){
+        sc.nextLine();
+        for (int i = 1; i <= rows; i++) {
+            for (int j = 1; j <= i; j++) {
                 System.out.print("* ");
             }
             System.out.println();
         }
     }
 
-    public static void isPrime(){
+    public static void isPrime() {
         System.out.println("Enter a number to check if it is prime: ");
         int num = sc.nextInt();
+        sc.nextLine();
 
-        if(num > 1){
-            for(int i=2; i<=Math.sqrt(num); i++){
-                if(num % i == 0){
-                    System.out.println(num + " is a prime number.");
+        boolean isPrime = true;
+
+        if (num > 1) {
+            for (int i = 2; i <= Math.sqrt(num); i++) {
+                if (num % i == 0) {
+                    isPrime = false;
                     break;
                 }
-                else{
-                    System.out.println(num + " is not a prime number.");
-                }
+            }
+
+            if (isPrime) {
+                System.out.println(num + " is a prime number.");
+            } else {
+                System.out.println(num + " is not a prime number.");
             }
 
         } else {
@@ -86,12 +96,13 @@ public class ToolboxApp {
         }
     }
 
-    public static void reverseNumber(){
+    public static void reverseNumber() {
         String reversed = "";
         System.out.println("Enter a number to reverse:");
         String numStr = sc.next();
+        sc.nextLine();
 
-        for(int i=numStr.length()-1; i>=0; i--){
+        for (int i = numStr.length() - 1; i >= 0; i--) {
             reversed += numStr.charAt(i);
         }
 
@@ -99,11 +110,12 @@ public class ToolboxApp {
 
     }
 
-    public static void numberPyramid(){
+    public static void numberPyramid() {
         System.out.println("Enter the number of rows for the number pyramid: ");
         int rows = sc.nextInt();
-        for(int i=1; i<=rows; i++){
-            for(int j=1; j<=i; j++){
+        sc.nextLine();
+        for (int i = 1; i <= rows; i++) {
+            for (int j = 1; j <= i; j++) {
                 System.out.print(j + " ");
             }
             System.out.println();
@@ -111,10 +123,10 @@ public class ToolboxApp {
     }
 
     public static void main(String[] args) {
-        
+
         boolean stop = false;
 
-        do{
+        do {
             System.out.println("1. Celsius to Fahrenheit");
             System.out.println("2. Even or odd");
             System.out.println("3. Maximum of three numbers");
@@ -127,8 +139,8 @@ public class ToolboxApp {
             System.out.println("0. Exit");
             System.out.print("Please enter a number between 0 and 9: ");
             String input = sc.nextLine();
-            
-            switch(input){
+
+            switch (input) {
                 case "1":
                     celsiusToFahrenheit();
                     System.out.println("\n (menu is shown again)");
@@ -174,8 +186,7 @@ public class ToolboxApp {
                     System.out.print("\n (menu is shown again)");
             }
 
-        }
-        while(!stop);
+        } while (!stop);
         sc.close();
     }
 }
