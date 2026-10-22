@@ -7,18 +7,22 @@ public class ATMProject {
     static double balance = 1000.00;
     static int pin = 1234;
     static boolean isLogged = false;
-    static double depositCounter = 0;
-    static double withdrawCounter = 0;
+    static int depositCounter = 0;
+    static int withdrawCounter = 0;
     static double depositeTotal = 0;
     static double withdrawTotal = 0;
     static double intrest = 0;
+    static double updatedBalance = balance;
+    static double withdrawSession = 0;
 
     static void login() {
         int count = 0;
-        System.out.print("Enter your PIN: ");
-        int enteredPin = sc.nextInt();
 
         while (count < 3) {
+            System.out.print("Enter your PIN: ");
+            int enteredPin = sc.nextInt();
+            sc.nextLine();
+
             if (enteredPin == pin) {
                 System.out.println("Welcome !");
                 isLogged = true;
@@ -35,33 +39,35 @@ public class ATMProject {
     }
 
     static void checkBalance() {
-        System.out.println("Current Balance: " + balance);
+        System.out.println("Current Balance: " + updatedBalance);
     }
 
     static void deposit(double amount) {
         if (amount > 0 && amount < 5000) {
             depositCounter++;
             depositeTotal += amount;
-            System.out.println("Deposit successful. Balance: " + (balance + depositeTotal));
+            updatedBalance += depositeTotal;
+            System.out.println("Deposit successful. Balance: " + updatedBalance);
         } else {
             System.out.println("Error: amount must be greater than 0 and not more than 5000");
         }
     }
 
     static void withdraw(double amount) {
-        double withdrawSession = 0;
         if (withdrawSession <= 1000) {
             if (amount > 0 && (amount % 10 == 0)) {
                 if (amount <= 500) {
                     withdrawCounter++;
                     withdrawSession += (amount + 2);
                     withdrawTotal += (amount + 2);
-                    System.out.println("Withdrawal successful. Balance: " + (balance - withdrawTotal));
+                    updatedBalance -= withdrawTotal;
+                    System.out.println("Withdrawal successful. Balance: " + updatedBalance);
                 } else {
                     withdrawCounter++;
                     withdrawSession += (amount + 5);
                     withdrawTotal += (amount + 5);
-                    System.out.println("Withdrawal successful. Balance: " + (balance - withdrawTotal));
+                    updatedBalance -= withdrawTotal;
+                    System.out.println("Withdrawal successful. Balance: " + updatedBalance);
                 }
             } else {
                 System.out.println("Amount must be greater than 0 and a multiple of 10");
@@ -72,15 +78,15 @@ public class ATMProject {
     }
 
     static void accountTier() {
-        if (balance < 1000) {
+        if (updatedBalance < 1000) {
             intrest = 0.01;
             System.out.println("Tier: Bronze, interest rate: 1%");
 
-        } else if (balance >= 1000 && balance < 5000) {
+        } else if (updatedBalance >= 1000 && updatedBalance < 5000) {
             intrest = 0.02;
             System.out.println("Tier: Silver, interest rate: 2%");
 
-        } else if (balance >= 5000 && balance < 20000) {
+        } else if (updatedBalance >= 5000 && updatedBalance < 20000) {
             intrest = 0.03;
             System.out.println("Tier: Gold, interest rate: 3%");
 
@@ -91,16 +97,30 @@ public class ATMProject {
     }
 
     static void savingsProjection(int years) {
-        double yearlyBalance = balance * intrest;
+        if (updatedBalance < 1000) {
+            intrest = 0.01;
+
+        } else if (updatedBalance >= 1000 && updatedBalance < 5000) {
+            intrest = 0.02;
+
+        } else if (updatedBalance >= 5000 && updatedBalance < 20000) {
+            intrest = 0.03;
+
+        } else {
+            intrest = 0.04;
+        }
+
+        double yearlyBalance = updatedBalance * intrest;
         for (int i = 1; i <= years; i++) {
-            System.out.println("Year " + i + " : " + (balance - yearlyBalance));
+            updatedBalance += yearlyBalance;
+            System.out.println("Year " + i + " : " + updatedBalance);
         }
     }
 
     static void receiptSummary() {
         System.out.println("Deposits: " + depositCounter + ", total: " + depositeTotal);
         System.out.println("Withdrawals: " + withdrawCounter + ", total: " + withdrawTotal);
-        System.out.println("Balance: " + balance);
+        System.out.println("Balance: " + updatedBalance);
     }
 
     static void changePin() {
@@ -117,6 +137,7 @@ public class ATMProject {
                 System.out.println("Are you sure you want to change the PIN? ");
                 String confirming = sc.nextLine();
                 sc.nextLine();
+
                 if (confirming.toLowerCase() == "yes") {
                     System.out.println("PIN is changed successfully");
                 } else {
@@ -125,8 +146,7 @@ public class ATMProject {
             } else {
                 System.out.println("PIN must be 4-digits (1000 to 9999)");
             }
-        }
-        else{
+        } else {
             System.out.println("your PIN is Wrong. try again");
         }
     }
@@ -138,7 +158,7 @@ public class ATMProject {
 
         if (isLogged) {
             do {
-                System.out.println("=== ATM Simulator   ===");
+                System.out.println("\n=== ATM Simulator   ===");
                 System.out.println("1. Check balance");
                 System.out.println("2. Deposit");
                 System.out.println("3. Withdraw");
