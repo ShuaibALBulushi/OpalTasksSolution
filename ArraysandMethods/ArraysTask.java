@@ -15,7 +15,9 @@ public class ArraysTask {
         return result;
     }
 
-    
+    public static double averageArray(int[] arr){
+        return sumArray(arr) / arr.length;
+    }
 
     public static void main(String[] args) {
         
@@ -23,5 +25,6 @@ public class ArraysTask {
 
         // Question 1: Sum and Average
         System.out.println("Sum: " + sumArray(numbers));
+        System.out.println("Average: " + averageArray(numbers));
     }
 }
