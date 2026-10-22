@@ -52,5 +52,7 @@ public class ArraysTask {
         // Question 2: Largest and Smallest
         System.out.println("Max: " + findMax(numbers));
         System.out.println("Min: " + findMin(numbers));
+        System.out.println("Difference: " + (findMax(numbers) - findMin(numbers)));
+
     }
 }
