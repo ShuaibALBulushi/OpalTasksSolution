@@ -30,6 +30,17 @@ public class ArraysTask {
         return max;
     }
 
+    public static int findMin(int[] arr){
+        int min = arr[0];
+
+        for(int i=0; i<arr.length; i++){
+            if(arr[i] < min){
+                min = arr[i];
+            }
+        }
+        return min;
+    }
+
     public static void main(String[] args) {
         
         int[] numbers = {12, 7, 25, 3, 18, 9, 30, 14};
@@ -40,5 +51,6 @@ public class ArraysTask {
 
         // Question 2: Largest and Smallest
         System.out.println("Max: " + findMax(numbers));
+        System.out.println("Min: " + findMin(numbers));
     }
 }
