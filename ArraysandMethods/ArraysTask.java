@@ -64,6 +64,14 @@ public class ArraysTask {
         return index;
     }
 
+    public static int[] reverseArray(int[] arr) {
+        int[] reversed = new int[arr.length];
+        for (int i = arr.length - 1; i >= 0; i--) {
+            reversed[(arr.length - 1) - i] = arr[i];
+        }
+        return reversed;
+    }
+
     public static void main(String[] args) {
 
         int[] numbers = { 12, 7, 25, 3, 18, 9, 30, 14 };
@@ -88,6 +96,11 @@ public class ArraysTask {
         } else {
             System.out.println(target + "found at index at " + indexOf(numbers, target));
         }
+
+        // Question 4: Reverse the Array
+        System.out.println("Original: " + java.util.Arrays.toString(numbers));
+        System.out.println("Reversed: " + java.util.Arrays.toString(reverseArray(numbers)));
+
 
     }
 }
