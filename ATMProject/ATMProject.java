@@ -11,6 +11,7 @@ public class ATMProject {
     static double withdrawCounter = 0;
     static double depositeTotal = 0;
     static double withdrawTotal = 0;
+    static double intrest = 0;
 
     static void login() {
         int count = 0;
@@ -72,13 +73,27 @@ public class ATMProject {
 
     static void accountTier() {
         if (balance < 1000) {
+            intrest = 0.01;
             System.out.println("Tier: Bronze, interest rate: 1%");
+
         } else if (balance >= 1000 && balance < 5000) {
+            intrest = 0.02;
             System.out.println("Tier: Silver, interest rate: 2%");
+
         } else if (balance >= 5000 && balance < 20000) {
+            intrest = 0.03;
             System.out.println("Tier: Gold, interest rate: 3%");
+
         } else {
+            intrest = 0.04;
             System.out.println("Tier: Platinum, interest rate: 4%");
+        }
+    }
+
+    static void savingsProjection(int years) {
+        double yearlyBalance = balance * intrest;
+        for(int i=1; i<=years; i++){
+            System.out.println("Year " + i + " : " + (balance - yearlyBalance));
         }
     }
 
@@ -121,7 +136,10 @@ public class ATMProject {
                         accountTier();
                         break;
                     case "5":
-
+                        System.out.println("Enter number of years: ");
+                        int years = sc.nextInt();
+                        sc.nextLine();
+                        savingsProjection(years);
                         break;
                     case "6":
 
