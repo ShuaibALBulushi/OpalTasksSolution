@@ -33,18 +33,43 @@ public class ATMProject {
         }
     }
 
-    static void checkBalance(){
+    static void checkBalance() {
         System.out.println("Current Balance: " + balance);
     }
 
-    static void deposit(double amount){
-        if(amount > 0 && amount < 5000){
+    static void deposit(double amount) {
+        if (amount > 0 && amount < 5000) {
             depositCounter++;
             depositeTotal += amount;
             System.out.println("Deposit successful. Balance: " + (balance + depositeTotal));
+        } else {
+            System.out.println("Error: amount must be greater than 0 and not more than 5000");
+        }
+    }
+
+    static void withdraw(double amount) {
+        double withdrawSession = 0;
+        if (withdrawSession <= 1000) {
+            if (amount > 0 && (amount % 10 == 0)) {
+                if (amount <= 500) {
+                    withdrawCounter++;
+                    withdrawSession += (amount + 2);
+                    withdrawTotal += (amount + 2);
+                    System.out.println("Withdrawal successful. Balance: " + (balance - withdrawTotal));
+                }
+                else{
+                    withdrawCounter++;
+                    withdrawSession += (amount + 5);
+                    withdrawTotal += (amount + 5);
+                    System.out.println("Withdrawal successful. Balance: " + (balance - withdrawTotal));
+                }
+            }
+            else{
+                System.out.println("Amount must be greater than 0 and a multiple of 10");
+            }
         }
         else{
-            System.out.println("Error: amount must be greater than 0 and not more than 5000");
+            System.out.println("total withdrawn in one session cannot pass 1000");
         }
     }
 
@@ -78,7 +103,10 @@ public class ATMProject {
                         deposit(amount);
                         break;
                     case "3":
-                        
+                        System.out.println("Enter the amount you want to withdraw");
+                        double withdrawAmount = sc.nextDouble();
+                        sc.nextLine();
+                        withdraw(withdrawAmount);
                         break;
                     case "4":
 
@@ -103,6 +131,6 @@ public class ATMProject {
 
             } while (!stop);
             sc.close();
-        } 
+        }
     }
 }
