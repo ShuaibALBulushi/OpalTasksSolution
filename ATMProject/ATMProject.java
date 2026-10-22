@@ -92,15 +92,43 @@ public class ATMProject {
 
     static void savingsProjection(int years) {
         double yearlyBalance = balance * intrest;
-        for(int i=1; i<=years; i++){
+        for (int i = 1; i <= years; i++) {
             System.out.println("Year " + i + " : " + (balance - yearlyBalance));
         }
     }
 
-    static void receiptSummary(){
+    static void receiptSummary() {
         System.out.println("Deposits: " + depositCounter + ", total: " + depositeTotal);
         System.out.println("Withdrawals: " + withdrawCounter + ", total: " + withdrawTotal);
         System.out.println("Balance: " + balance);
+    }
+
+    static void changePin() {
+        System.out.println("Enter your PIN: ");
+        int checkPin = sc.nextInt();
+        sc.nextLine();
+
+        if (checkPin == pin) {
+            System.out.println("Enter your new PIN: ");
+            int newPin = sc.nextInt();
+            sc.nextLine();
+
+            if (newPin >= 1000 && newPin <= 9999) {
+                System.out.println("Are you sure you want to change the PIN? ");
+                String confirming = sc.nextLine();
+                sc.nextLine();
+                if (confirming.toLowerCase() == "yes") {
+                    System.out.println("PIN is changed successfully");
+                } else {
+                    System.out.println("PIN change request is Canceled");
+                }
+            } else {
+                System.out.println("PIN must be 4-digits (1000 to 9999)");
+            }
+        }
+        else{
+            System.out.println("your PIN is Wrong. try again");
+        }
     }
 
     public static void main(String[] args) {
@@ -151,7 +179,7 @@ public class ATMProject {
                         receiptSummary();
                         break;
                     case "7":
-
+                        changePin();
                         break;
                     case "0":
                         stop = true;
