@@ -72,6 +72,25 @@ public class ArraysTask {
         return reversed;
     }
 
+    public static int[] readGrades(int size){
+        int[] grades = new int[size];
+        for(int i=0; i<size; i++){
+            System.out.print("Enter grade " + i+1 + ": ");
+            grades[i] = sc.nextInt();
+        }
+        return grades;
+    }
+
+    public static int countPassed(int[] grades){
+        int countpassed = 0;
+        for(int i=0; i<grades.length; i++){
+            if(grades[i] >= 50){
+                countpassed++;
+            }
+        }
+        return countpassed;
+    }
+
     public static void main(String[] args) {
 
         int[] numbers = { 12, 7, 25, 3, 18, 9, 30, 14 };
@@ -94,13 +113,20 @@ public class ArraysTask {
         if (indexOf(numbers, target) == -1) {
             System.out.println(target + " not found");
         } else {
-            System.out.println(target + "found at index at " + indexOf(numbers, target));
+            System.out.println(target + " found at index " + indexOf(numbers, target));
         }
 
         // Question 4: Reverse the Array
         System.out.println("Original: " + java.util.Arrays.toString(numbers));
         System.out.println("Reversed: " + java.util.Arrays.toString(reverseArray(numbers)));
 
+        // Question 5: Student Grades
+        System.out.print("Enter the number of students: ");
+        int size = sc.nextInt();
+        int[] grades = new int[size];
+        grades = readGrades(size);
 
+        System.out.println("Passed: " + countPassed(grades));
+        System.out.println("Failed: " + (size - countPassed(grades)));
     }
 }
