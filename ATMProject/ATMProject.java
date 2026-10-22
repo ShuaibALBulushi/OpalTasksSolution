@@ -56,20 +56,29 @@ public class ATMProject {
                     withdrawSession += (amount + 2);
                     withdrawTotal += (amount + 2);
                     System.out.println("Withdrawal successful. Balance: " + (balance - withdrawTotal));
-                }
-                else{
+                } else {
                     withdrawCounter++;
                     withdrawSession += (amount + 5);
                     withdrawTotal += (amount + 5);
                     System.out.println("Withdrawal successful. Balance: " + (balance - withdrawTotal));
                 }
-            }
-            else{
+            } else {
                 System.out.println("Amount must be greater than 0 and a multiple of 10");
             }
-        }
-        else{
+        } else {
             System.out.println("total withdrawn in one session cannot pass 1000");
+        }
+    }
+
+    static void accountTier() {
+        if (balance < 1000) {
+            System.out.println("Tier: Bronze, interest rate: 1%");
+        } else if (balance >= 1000 && balance < 5000) {
+            System.out.println("Tier: Silver, interest rate: 2%");
+        } else if (balance >= 5000 && balance < 20000) {
+            System.out.println("Tier: Gold, interest rate: 3%");
+        } else {
+            System.out.println("Tier: Platinum, interest rate: 4%");
         }
     }
 
@@ -109,7 +118,7 @@ public class ATMProject {
                         withdraw(withdrawAmount);
                         break;
                     case "4":
-
+                        accountTier();
                         break;
                     case "5":
 
