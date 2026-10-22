@@ -97,6 +97,12 @@ public class ATMProject {
         }
     }
 
+    static void receiptSummary(){
+        System.out.println("Deposits: " + depositCounter + ", total: " + depositeTotal);
+        System.out.println("Withdrawals: " + withdrawCounter + ", total: " + withdrawTotal);
+        System.out.println("Balance: " + balance);
+    }
+
     public static void main(String[] args) {
 
         boolean stop = false;
@@ -142,7 +148,7 @@ public class ATMProject {
                         savingsProjection(years);
                         break;
                     case "6":
-
+                        receiptSummary();
                         break;
                     case "7":
 
