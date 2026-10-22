@@ -7,6 +7,10 @@ public class ATMProject {
     static double balance = 1000.00;
     static int pin = 1234;
     static boolean isLogged = false;
+    static double depositCounter = 0;
+    static double withdrawCounter = 0;
+    static double depositeTotal = 0;
+    static double withdrawTotal = 0;
 
     static void login() {
         int count = 0;
@@ -27,6 +31,10 @@ public class ATMProject {
                 }
             }
         }
+    }
+
+    static void checkBalance(){
+        System.out.println("Current Balance: " + balance);
     }
 
     public static void main(String[] args) {
@@ -50,7 +58,7 @@ public class ATMProject {
 
                 switch (input) {
                     case "1":
-                        
+                        checkBalance();
                         break;
                     case "2":
                         
