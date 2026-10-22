@@ -29,7 +29,54 @@ public class ATMProject {
 
     public static void main(String[] args) {
 
-        // Part 1: Login
+        boolean stop = false;
+
+        do {
+            System.out.println("1. Check balance");
+            System.out.println("2. Deposit");
+            System.out.println("3. Withdraw");
+            System.out.println("4. Account tier");
+            System.out.println("5. Savings projection");
+            System.out.println("6. Receipt summary");
+            System.out.println("7. Change PIN");
+            System.out.println("0. Exit");
+            System.out.print("Please enter a number between 0 and 7: ");
+            String input = sc.nextLine();
+
+            switch (input) {
+                case "1":
+                    
+                    break;
+                case "2":
+                    
+                    break;
+                case "3":
+                    
+                    break;
+                case "4":
+                    
+                    break;
+                case "5":
+                    
+                    break;
+                case "6":
+                    
+                    break;
+                case "7":
+                    
+                    break;
+                case "0":
+                    stop = true;
+                    System.out.println("Goodbye!");
+                    break;
+                default:
+                    System.out.println("Invalid input. Please enter a number between 0 and 9.");
+                    System.out.print("\n (menu is shown again)");
+            }
+
+        } while (!stop);
+        sc.close();
+
         
     }
 }
