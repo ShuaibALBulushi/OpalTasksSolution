@@ -41,6 +41,16 @@ public class ArraysTask {
         return min;
     }
 
+    public static int countEven(int[] arr){
+        int count = 0;
+        for(int i=0; i<arr.length; i++){
+            if(arr[i]%2 == 0){
+                count += 1;
+            }
+        }
+        return count;
+    }
+
     public static void main(String[] args) {
         
         int[] numbers = {12, 7, 25, 3, 18, 9, 30, 14};
@@ -54,5 +64,7 @@ public class ArraysTask {
         System.out.println("Min: " + findMin(numbers));
         System.out.println("Difference: " + (findMax(numbers) - findMin(numbers)));
 
+        // Question 3: Count and Search
+        System.out.println("Even numbers: " + countEven(numbers));
     }
 }
