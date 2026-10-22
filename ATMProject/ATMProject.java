@@ -75,9 +75,10 @@ public class ATMProject {
                         System.out.println("Enter the amount you want to deposite");
                         double amount = sc.nextDouble();
                         sc.nextLine();
+                        deposit(amount);
                         break;
                     case "3":
-
+                        
                         break;
                     case "4":
 
