@@ -37,6 +37,17 @@ public class ATMProject {
         System.out.println("Current Balance: " + balance);
     }
 
+    static void deposit(double amount){
+        if(amount > 0 && amount < 5000){
+            depositCounter++;
+            depositeTotal += amount;
+            System.out.println("Deposit successful. Balance: " + (balance + depositeTotal));
+        }
+        else{
+            System.out.println("Error: amount must be greater than 0 and not more than 5000");
+        }
+    }
+
     public static void main(String[] args) {
 
         boolean stop = false;
@@ -61,7 +72,9 @@ public class ATMProject {
                         checkBalance();
                         break;
                     case "2":
-                        
+                        System.out.println("Enter the amount you want to deposite");
+                        double amount = sc.nextDouble();
+                        sc.nextLine();
                         break;
                     case "3":
 
