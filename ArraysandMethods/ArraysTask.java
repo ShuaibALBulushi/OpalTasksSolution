@@ -75,7 +75,7 @@ public class ArraysTask {
     public static int[] readGrades(int size){
         int[] grades = new int[size];
         for(int i=0; i<size; i++){
-            System.out.print("Enter grade " + i+1 + ": ");
+            System.out.print("Enter grade " + (i+1) + ": ");
             grades[i] = sc.nextInt();
         }
         return grades;
