@@ -10,8 +10,6 @@ public class FeedbackPortal {
     static String[] comments = new String[100];
     static int count = 0;
     static Scanner sc = new Scanner(System.in);
-    static BufferedWriter writer;
-    static BufferedReader reader;
 
     static void showMenu() {
         System.out.println("\n===== CUSTOMER FEEDBACK PORTAL =====");
@@ -29,7 +27,6 @@ public class FeedbackPortal {
         if (rating >= 1 && rating <= 5) {
             System.out.println("Enter your name: ");
             String name = sc.nextLine();
-            sc.nextLine();
 
             System.out.println("Enter your comment: ");
             String comment = sc.nextLine();
@@ -50,7 +47,7 @@ public class FeedbackPortal {
             System.out.println("No feedback available.");
             return;
         }
-        for (int i = 0; i <= count; i++) {
+        for (int i = 0; i < count; i++) {
             System.out.println(names[i] + "|" + ratings[i] + "|" + comments[i]);
         }
     }
@@ -63,21 +60,72 @@ public class FeedbackPortal {
 
         int sum = 0;
         for (int i = 0; i < ratings.length; i++) {
-            sum += i;
+            sum += ratings[i];
         }
-
-        System.out.println("Average Rating: " + (sum / ratings.length));
+        double avg = sum / ratings.length;
+        System.out.println("Average Rating: " + avg);
     }
 
-    static void searchByRating(int rate){
-        for(int i=0; i<count; i++){
-            if(ratings[i] == rate){
+    static void searchByRating(int rate) {
+        for (int i = 0; i < count; i++) {
+            if (ratings[i] == rate) {
                 System.out.println(names[i] + "|" + ratings[i] + "|" + comments[i]);
             }
         }
     }
 
-    static  void deleteFeedback(){
+    static void deleteFeedback() {
+        if (count == 0) {
+            System.out.println("No feedback to delete.");
+            return;
+        }
+        showAll();
+        System.out.print("Enter the index of the feedback to delete (0 to " + (count - 1) + "): ");
+        int index = sc.nextInt();
+        sc.nextLine();
+
+        if (index >= 0 && index < count) {
+            for (int i = index; i < count - 1; i++) {
+                names[i] = names[i + 1];
+                ratings[i] = ratings[i + 1];
+                comments[i] = comments[i + 1];
+            }
+            count--;
+            System.out.println("Feedback deleted successfully!");
+        } else {
+            System.out.println("Error: Invalid index.");
+        }
+    }
+
+    static void saveFeedback() {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("feedback.txt"))) {
+            for (int i = 0; i < count; i++) {
+                writer.write(names[i] + "|" + ratings[i] + "|" + comments[i]);
+                writer.newLine();
+            }
+            System.out.println("Feedback saved to file successfully.");
+        } catch (IOException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    static void loadFeedback() {
+        try (BufferedReader reader = new BufferedReader(new FileReader("feedback.txt"))) {
+            count = 0;
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split("\\|");
+                if (parts.length == 3) {
+                    names[count] = parts[0];
+                    ratings[count] = Integer.parseInt(parts[1]);
+                    comments[count] = parts[2];
+                    count++;
+                }
+            }
+            System.out.println("Feedback loaded from file successfully.");
+        } catch (IOException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
 
     }
 
@@ -111,12 +159,14 @@ public class FeedbackPortal {
                     searchByRating(rate);
                     break;
                 case "5":
-
+                    deleteFeedback();
                     break;
                 case "6":
-
+                    saveFeedback();
+                    loadFeedback();
                     break;
                 case "7":
+                    saveFeedback();
                     stop = true;
                     System.out.println("Goodbye!");
                     break;
