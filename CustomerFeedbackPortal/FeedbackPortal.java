@@ -1,8 +1,17 @@
 package CustomerFeedbackPortal;
 
+import java.io.*;
 import java.util.Scanner;
 
 public class FeedbackPortal {
+
+    static String[] names = new String[5];
+    static int[] ratings = new int[5];;
+    static String[] comments = new String[100];
+    static int count = 0;
+    static Scanner sc = new Scanner(System.in);
+    static BufferedWriter writer;
+    static BufferedReader reader;
 
     static void showMenu() {
         System.out.println("\n===== CUSTOMER FEEDBACK PORTAL =====");
@@ -16,14 +25,28 @@ public class FeedbackPortal {
         System.out.print("Chose: ");
     }
 
-    static String[] names;
-    static int[] ratings = new int[5];;
-    static String[] comments = new String[100];
-    static int count = 0; 
+    static void addFeedback(int rating) throws IOException {
+        if (rating >= 1 && rating <= 5) {
+            System.out.println("Enter your name: ");
+            String name = sc.nextLine();
+            sc.nextLine();
+
+            System.out.println("Enter your comment: ");
+            String comment = sc.nextLine();
+
+            names[count] = name;
+            ratings[count] = rating;
+            comments[count] = comment;
+            count++;
+
+            System.out.println("Feedback added successfully!");
+        } else {
+            System.out.println("Error: Rating must be between 1 and 5");
+        }
+    }
 
     public static void main(String[] args) {
 
-        Scanner sc = new Scanner(System.in);
         boolean stop = false;
 
         while (!stop) {
@@ -32,7 +55,13 @@ public class FeedbackPortal {
 
             switch (option) {
                 case "1":
-
+                    try {
+                        System.out.println("Enter your rating(choose from 1 to 5)");
+                        int rating = sc.nextInt();
+                        addFeedback(rating);
+                    } catch (IOException e) {
+                        System.out.println("Error:\n" + e.getMessage());
+                    }
                     break;
                 case "2":
 
