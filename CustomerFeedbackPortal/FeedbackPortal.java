@@ -45,6 +45,12 @@ public class FeedbackPortal {
         }
     }
 
+    static void showAll(){
+        for(int i=0; i<=count; i++){
+            System.out.println(names[i] + "|" + ratings[i] + "|" + comments[i]);
+        }
+    }
+
     public static void main(String[] args) {
 
         boolean stop = false;
@@ -64,7 +70,7 @@ public class FeedbackPortal {
                     }
                     break;
                 case "2":
-
+                    showAll();
                     break;
                 case "3":
 
