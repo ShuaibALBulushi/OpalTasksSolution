@@ -46,12 +46,21 @@ public class FeedbackPortal {
     }
 
     static void showAll() {
+        if (count == 0) {
+            System.out.println("No feedback available.");
+            return;
+        }
         for (int i = 0; i <= count; i++) {
             System.out.println(names[i] + "|" + ratings[i] + "|" + comments[i]);
         }
     }
 
     static void showAverage() {
+        if (count == 0) {
+            System.out.println("No feedback available to calculate average.");
+            return;
+        }
+
         int sum = 0;
         for (int i = 0; i < ratings.length; i++) {
             sum += i;
@@ -66,6 +75,10 @@ public class FeedbackPortal {
                 System.out.println(names[i] + "|" + ratings[i] + "|" + comments[i]);
             }
         }
+    }
+
+    static  void deleteFeedback(){
+
     }
 
     public static void main(String[] args) {
