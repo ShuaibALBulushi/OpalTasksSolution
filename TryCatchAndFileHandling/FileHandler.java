@@ -10,12 +10,18 @@ public class FileHandler {
 
     static String copiedContent = "";
 
-    public static void main(String[] args) throws IOException {
-        Reader();
-        Writer();
+    public static void main(String[] args) {
+        try {
+            System.out.println("File content:");
+            Reader();
+            Writer();
+        } catch (IOException e) {
+            System.out.println("Error: \n" + e.getMessage());
+        }
+
     }
 
-    static void Reader() throws IOException {
+    static void Reader() throws IOException{
         BufferedReader reader = new BufferedReader(new FileReader("text.txt"));
         StringBuilder sb = new StringBuilder();
 
@@ -28,11 +34,11 @@ public class FileHandler {
         reader.close();
     }
 
-    static void Writer() throws IOException {
+    static void Writer() throws IOException{
         BufferedWriter writer = new BufferedWriter(new FileWriter("text2.txt", true));
         writer.write(copiedContent);
         writer.newLine();
         writer.close();
-        System.out.println("Successfully stored content in text2.txt");
+        System.out.println("\nSuccessfully stored content in text2.txt");
     }
 }
