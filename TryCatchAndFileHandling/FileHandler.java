@@ -6,6 +6,9 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class FileHandler {
+
+    static String copiedContent;
+
     public static void main(String[] args) throws IOException{
         Reader();
     }
@@ -17,6 +20,7 @@ public class FileHandler {
 
         while((content = reader.readLine()) != null){
             System.out.println(content);
+            copiedContent = content;
         }
         reader.close();
     }
