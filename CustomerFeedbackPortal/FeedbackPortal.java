@@ -25,11 +25,12 @@ public class FeedbackPortal {
 
     static void addFeedback(int rating) throws IOException {
         if (rating >= 1 && rating <= 5) {
+            sc.nextLine();
             System.out.println("Enter your name: ");
             String name = sc.nextLine();
 
             System.out.println("Enter your comment: ");
-            String comment = sc.nextLine();
+            String comment = sc.nextLine(); 
 
             names[count] = name;
             ratings[count] = rating;
@@ -59,10 +60,11 @@ public class FeedbackPortal {
         }
 
         int sum = 0;
-        for (int i = 0; i < ratings.length; i++) {
+        for (int i = 0; i < count; i++) {
             sum += ratings[i];
         }
-        double avg = sum / ratings.length;
+        
+        double avg = (double) sum / count;
         System.out.println("Average Rating: " + avg);
     }
 
@@ -113,15 +115,27 @@ public class FeedbackPortal {
         try (BufferedReader reader = new BufferedReader(new FileReader("feedback.txt"))) {
             count = 0;
             String line;
+            boolean hasContent = false;
+            
+            System.out.println("\n--- Feedback Loaded From File ---");
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split("\\|");
                 if (parts.length == 3) {
                     names[count] = parts[0];
                     ratings[count] = Integer.parseInt(parts[1]);
                     comments[count] = parts[2];
+                    
+                    System.out.println(names[count] + "|" + ratings[count] + "|" + comments[count]);
+                    
                     count++;
+                    hasContent = true;
                 }
             }
+            
+            if (!hasContent) {
+                System.out.println("No feedback found in the file.");
+            }
+            
             System.out.println("Feedback loaded from file successfully.");
         } catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
