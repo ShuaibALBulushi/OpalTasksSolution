@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class FeedbackPortal {
 
     static String[] names = new String[5];
-    static int[] ratings = new int[5];;
+    static int[] ratings = new int[5];
     static String[] comments = new String[100];
     static int count = 0;
     static Scanner sc = new Scanner(System.in);
@@ -19,13 +19,12 @@ public class FeedbackPortal {
         System.out.println("4. Search by rating");
         System.out.println("5. Delete feedback");
         System.out.println("6. Save to file");
-        System.out.println("7 Save and exit");
-        System.out.print("Chose: ");
+        System.out.println("7. Save and exit");
+        System.out.print("Choose: ");
     }
 
     static void addFeedback(int rating) throws IOException {
         if (rating >= 1 && rating <= 5) {
-            sc.nextLine();
             System.out.println("Enter your name: ");
             String name = sc.nextLine();
 
@@ -69,10 +68,15 @@ public class FeedbackPortal {
     }
 
     static void searchByRating(int rate) {
+        boolean found = false;
         for (int i = 0; i < count; i++) {
             if (ratings[i] == rate) {
                 System.out.println(names[i] + "|" + ratings[i] + "|" + comments[i]);
+                found = true;
             }
+        }
+        if (!found) {
+            System.out.println("No feedback found with rating " + rate);
         }
     }
 
@@ -82,20 +86,24 @@ public class FeedbackPortal {
             return;
         }
         showAll();
-        System.out.print("Enter the index of the feedback to delete (0 to " + (count - 1) + "): ");
-        int index = sc.nextInt();
-        sc.nextLine();
+        
+        try {
+            System.out.print("Enter the index of the feedback to delete (0 to " + (count - 1) + "): ");
+            int index = Integer.parseInt(sc.nextLine());
 
-        if (index >= 0 && index < count) {
-            for (int i = index; i < count - 1; i++) {
-                names[i] = names[i + 1];
-                ratings[i] = ratings[i + 1];
-                comments[i] = comments[i + 1];
+            if (index >= 0 && index < count) {
+                for (int i = index; i < count - 1; i++) {
+                    names[i] = names[i + 1];
+                    ratings[i] = ratings[i + 1];
+                    comments[i] = comments[i + 1];
+                }
+                count--;
+                System.out.println("Feedback deleted successfully!");
+            } else {
+                System.out.println("Error: Invalid index.");
             }
-            count--;
-            System.out.println("Feedback deleted successfully!");
-        } else {
-            System.out.println("Error: Invalid index.");
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Please enter a valid integer for the index.");
         }
     }
 
@@ -122,7 +130,7 @@ public class FeedbackPortal {
                 String[] parts = line.split("\\|");
                 if (parts.length == 3) {
                     names[count] = parts[0];
-                    ratings[count] = Integer.parseInt(parts[1]);
+                    ratings[count] = Integer.parseInt(parts[1]); // Can throw NumberFormatException
                     comments[count] = parts[2];
                     
                     System.out.println(names[count] + "|" + ratings[count] + "|" + comments[count]);
@@ -137,14 +145,12 @@ public class FeedbackPortal {
             }
             
             System.out.println("Feedback loaded from file successfully.");
-        } catch (IOException e) {
+        } catch (IOException | NumberFormatException e) {
             System.out.println("Error: " + e.getMessage());
         }
-
     }
 
     public static void main(String[] args) {
-
         boolean stop = false;
 
         while (!stop) {
@@ -154,9 +160,11 @@ public class FeedbackPortal {
             switch (option) {
                 case "1":
                     try {
-                        System.out.println("Enter your rating(choose from 1 to 5)");
-                        int rating = sc.nextInt();
+                        System.out.println("Enter your rating (choose from 1 to 5):");
+                        int rating = Integer.parseInt(sc.nextLine());
                         addFeedback(rating);
+                    } catch (NumberFormatException e) {
+                        System.out.println("Error: Please enter a valid integer for the rating.");
                     } catch (IOException e) {
                         System.out.println("Error:\n" + e.getMessage());
                     }
@@ -168,9 +176,13 @@ public class FeedbackPortal {
                     showAverage();
                     break;
                 case "4":
-                    System.out.println("Enter rating to search");
-                    int rate = sc.nextInt();
-                    searchByRating(rate);
+                    try {
+                        System.out.println("Enter rating to search:");
+                        int rate = Integer.parseInt(sc.nextLine());
+                        searchByRating(rate);
+                    } catch (NumberFormatException e) {
+                        System.out.println("Error: Please enter a valid integer for the rating.");
+                    }
                     break;
                 case "5":
                     deleteFeedback();
@@ -190,6 +202,5 @@ public class FeedbackPortal {
             }
         }
         sc.close();
-
     }
 }
