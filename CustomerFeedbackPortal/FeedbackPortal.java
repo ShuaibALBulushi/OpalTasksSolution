@@ -45,9 +45,26 @@ public class FeedbackPortal {
         }
     }
 
-    static void showAll(){
-        for(int i=0; i<=count; i++){
+    static void showAll() {
+        for (int i = 0; i <= count; i++) {
             System.out.println(names[i] + "|" + ratings[i] + "|" + comments[i]);
+        }
+    }
+
+    static void showAverage() {
+        int sum = 0;
+        for (int i = 0; i < ratings.length; i++) {
+            sum += i;
+        }
+
+        System.out.println("Average Rating: " + (sum / ratings.length));
+    }
+
+    static void searchByRating(int rate){
+        for(int i=0; i<count; i++){
+            if(ratings[i] == rate){
+                System.out.println(names[i] + "|" + ratings[i] + "|" + comments[i]);
+            }
         }
     }
 
@@ -73,10 +90,12 @@ public class FeedbackPortal {
                     showAll();
                     break;
                 case "3":
-
+                    showAverage();
                     break;
                 case "4":
-
+                    System.out.println("Enter rating to search");
+                    int rate = sc.nextInt();
+                    searchByRating(rate);
                     break;
                 case "5":
 
