@@ -6,8 +6,7 @@ public class Pattern {
 
     static int inputVal() {
         System.out.print("Output for n:");
-        int n = sc.nextInt();
-        return n;
+        return sc.nextInt();
     }
 
     public static void main(String[] args) {
@@ -17,8 +16,8 @@ public class Pattern {
          * number i repeated i
          * times
          */
-
-        for (int i = 1; i <= inputVal(); i++) {
+        int n = inputVal();
+        for (int i = 1; i <= n; i++) {
             for (int j = 1; j <= i; j++) {
                 System.out.print(i + " ");
             }
@@ -30,7 +29,8 @@ public class Pattern {
          * from 1 up, starting
          * with n numbers and losing one number in each row.
          */
-        for (int i = inputVal(); i >= 1; i--) {
+        int n2 = inputVal();
+        for (int i = n2; i >= 1; i--) {
             for (int j = 1; j <= i; j++) {
                 System.out.print(j + " ");
             }
@@ -39,7 +39,17 @@ public class Pattern {
 
         // Write a Java program that reads n and prints a hollow square of stars with
         // side n.
-        
+        int n3 = inputVal();
+        for (int i = 1; i <= n3; i++) {
+            for (int j = 1; j <= n3; j++) {
+                if (i == 1 || i == n3 || j == 1 || j == n3) {
+                    System.out.print("* ");
+                } else {
+                    System.out.print("  ");
+                }
+            }
+            System.out.println();
+        }
 
         sc.close();
     }
