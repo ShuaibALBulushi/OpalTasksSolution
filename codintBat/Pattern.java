@@ -132,7 +132,7 @@ public class Pattern {
          * Output for n = 5
          */
         int n6 = inputVal();
-        
+
         for (int i = 1; i <= n6; i++) {
             for (int j = 1; j <= n6; j++) {
                 if (j == i || j == (n6 - i + 1)) {
@@ -144,9 +144,10 @@ public class Pattern {
             System.out.println();
         }
 
-        //Write a Java program that reads n and prints an hourglass of stars. The widest row has 2n - 1 stars.
+        // Write a Java program that reads n and prints an hourglass of stars. The
+        // widest row has 2n - 1 stars.
         int n7 = inputVal();
-        
+
         for (int var4 = n7 - 1; var4 >= 1; --var4) {
             for (int var6 = n7; var6 > var4; --var6) {
                 System.out.print(" ");
@@ -170,6 +171,20 @@ public class Pattern {
 
             System.out.println();
         }
+        /*
+         * Write a Java program that reads n and prints a triangle of letters where each
+         * row starts from the n-th
+         * letter and goes backwards
+         */
+
+        int n8 = inputVal();
+        for (int i = 0; i < n8; i++) {
+            for (int j = 0; j <= i; j++) {
+                System.out.print((char) (65 + n8 - 1 - j));
+            }
+            System.out.println();
+        }
+
 
         sc.close();
     }
