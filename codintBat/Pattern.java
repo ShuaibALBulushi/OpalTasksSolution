@@ -126,6 +126,25 @@ public class Pattern {
             System.out.println();
         }
 
+        /*
+         * Write a Java program that reads n and prints an X made of stars inside an n
+         * by n square.
+         * Output for n = 5
+         */
+        int n6 = inputVal();
+        
+        for (int i = 1; i <= n6; i++) {
+            for (int j = 1; j <= n6; j++) {
+                if (j == i || j == (n6 - i + 1)) {
+                    System.out.print("*");
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        }
+
+
         sc.close();
     }
 }
