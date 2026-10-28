@@ -10,8 +10,23 @@ public class Pattern {
     }
 
     public static void main(String[] args) {
+        // 1 - Write a Java program that reads n and prints a hollow square of stars
+        // with
+        // side n.
+        int n3 = inputVal();
+        for (int i = 1; i <= n3; i++) {
+            for (int j = 1; j <= n3; j++) {
+                if (i == 1 || i == n3 || j == 1 || j == n3) {
+                    System.out.print("* ");
+                } else {
+                    System.out.print("  ");
+                }
+            }
+            System.out.println();
+        }
 
         /*
+         * 2 -
          * Write a Java program that reads n and prints a triangle where row i shows the
          * number i repeated i
          * times
@@ -25,6 +40,7 @@ public class Pattern {
         }
 
         /*
+         * 3 -
          * Write a Java program that reads n and prints a triangle where each row counts
          * from 1 up, starting
          * with n numbers and losing one number in each row.
@@ -37,19 +53,7 @@ public class Pattern {
             System.out.println();
         }
 
-        // Write a Java program that reads n and prints a hollow square of stars with
-        // side n.
-        int n3 = inputVal();
-        for (int i = 1; i <= n3; i++) {
-            for (int j = 1; j <= n3; j++) {
-                if (i == 1 || i == n3 || j == 1 || j == n3) {
-                    System.out.print("* ");
-                } else {
-                    System.out.print("  ");
-                }
-            }
-            System.out.println();
-        }
+        
 
         sc.close();
     }
