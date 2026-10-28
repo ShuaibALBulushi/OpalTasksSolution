@@ -85,6 +85,47 @@ public class Pattern {
             System.out.println();
         }
 
+        /*
+         * Write a Java program that reads n and prints a hollow diamond of stars. Only
+         * the edge of the
+         * diamond is printed.
+         */
+
+        int n5 = inputVal();
+        for (int var2 = 1; var2 <= n5; ++var2) {
+            for (int var3 = var2; var3 < n5; ++var3) {
+                System.out.print(" ");
+            }
+
+            int maxCols = 2 * var2 - 1;
+            for (int var5 = 1; var5 <= maxCols; ++var5) {
+                if (var5 == 1 || var5 == maxCols) {
+                    System.out.print("*");
+                } else {
+                    System.out.print(" ");
+                }
+            }
+
+            System.out.println();
+        }
+
+        for (int var4 = n5 - 1; var4 >= 1; --var4) {
+            for (int var6 = n5; var6 > var4; --var6) {
+                System.out.print(" ");
+            }
+
+            int maxCols = 2 * var4 - 1;
+            for (int var7 = 1; var7 <= maxCols; ++var7) {
+                if (var7 == 1 || var7 == maxCols) {
+                    System.out.print("*");
+                } else {
+                    System.out.print(" ");
+                }
+            }
+
+            System.out.println();
+        }
+
         sc.close();
     }
 }
