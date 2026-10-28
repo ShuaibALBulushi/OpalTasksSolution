@@ -144,6 +144,32 @@ public class Pattern {
             System.out.println();
         }
 
+        //Write a Java program that reads n and prints an hourglass of stars. The widest row has 2n - 1 stars.
+        int n7 = inputVal();
+        
+        for (int var4 = n7 - 1; var4 >= 1; --var4) {
+            for (int var6 = n7; var6 > var4; --var6) {
+                System.out.print(" ");
+            }
+
+            for (int var7 = 1; var7 <= 2 * var4 - 1; ++var7) {
+                System.out.print("*");
+            }
+
+            System.out.println();
+        }
+
+        for (int var2 = 1; var2 <= n7; ++var2) {
+            for (int var3 = var2; var3 < n7; ++var3) {
+                System.out.print(" ");
+            }
+
+            for (int var5 = 1; var5 <= 2 * var2 - 1; ++var5) {
+                System.out.print("*");
+            }
+
+            System.out.println();
+        }
 
         sc.close();
     }
