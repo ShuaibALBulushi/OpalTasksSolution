@@ -1,4 +1,6 @@
+package codingBat;
 import java.util.Scanner;
+
 
 public class Pattern {
 
