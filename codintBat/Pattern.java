@@ -202,14 +202,23 @@ public class Pattern {
         }
 
         /*
-         * int n = inputVal();
-         * for (int i = 1; i <= n; i++) {
-         * for (int j = 1; j <= i; j++) {
-         * System.out.print(i + " ");
-         * }
-         * System.out.println();
-         * }
+         * Write a Java program that reads an odd n and prints a plus sign made of stars
+         * inside an n by n
+         * square.
          */
+
+        int n11 = inputVal();
+        int mid = (n11 / 2) + 1;
+        for (int i = 1; i <= n11; i++) {
+            for (int j = 1; j <= n11; j++) {
+                if (i == mid || j == mid) {
+                    System.out.print("* ");
+                } else {
+                    System.out.print("  ");
+                }
+            }
+            System.out.println();
+        }
         sc.close();
     }
 }
