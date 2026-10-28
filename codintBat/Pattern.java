@@ -53,7 +53,37 @@ public class Pattern {
             System.out.println();
         }
 
-        
+        /*
+         * 4-
+         * Write a Java program that reads n and prints a full diamond of stars. The
+         * widest row has 2n - 1 stars.
+         * Output for n = 5
+         */
+        int n4 = inputVal();
+
+        for (int var2 = 1; var2 <= n4; ++var2) {
+            for (int var3 = var2; var3 < n4; ++var3) {
+                System.out.print(" ");
+            }
+
+            for (int var5 = 1; var5 <= 2 * var2 - 1; ++var5) {
+                System.out.print("*");
+            }
+
+            System.out.println();
+        }
+
+        for (int var4 = n4 - 1; var4 >= 1; --var4) {
+            for (int var6 = n4; var6 > var4; --var6) {
+                System.out.print(" ");
+            }
+
+            for (int var7 = 1; var7 <= 2 * var4 - 1; ++var7) {
+                System.out.print("*");
+            }
+
+            System.out.println();
+        }
 
         sc.close();
     }
